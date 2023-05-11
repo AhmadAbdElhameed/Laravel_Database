@@ -1,0 +1,20 @@
+[
+    {
+        "title":"this is title",
+        "slug":"this is slug",
+        "excerpt":"this is excerpt",
+        "description":"this is description",
+        "is_published":true,
+        "min_to_read":5
+    },
+    {
+
+        "title":"this is forth title",
+        "slug":"this is forth slug",
+        "excerpt":"this is forth excerpt",
+        "description":"this is forth description",
+        "is_published":false,
+        "min_to_read":71
+
+    }
+]

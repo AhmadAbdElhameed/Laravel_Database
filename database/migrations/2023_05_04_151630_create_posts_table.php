@@ -12,13 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('posts', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->string('slug');
-            $table->text('excerpt');
+            $table->id()->from(1000);
+            $table->string('title')->unique();
+            $table->string('slug')->unique();
+            $table->text('excerpt')->comment('summary of the post');
             $table->longText('description');
-            $table->boolean('is_published');
-            $table->integer('min_to_read');
+            $table->boolean('is_published')->default(false);
+            $table->integer('min_to_read')->nullable(false);
             $table->timestamps();
         });
     }
