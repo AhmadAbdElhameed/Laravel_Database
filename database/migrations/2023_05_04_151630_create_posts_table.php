@@ -13,6 +13,19 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id()->from(1000);
+
+            // First method
+//            $table->unsignedBigInteger('user_id');
+//            $table->foreign('user_id')
+//                  ->references('id')
+//                  ->on('users')
+//                  ->cascadeOnDelete();
+
+            // Second method
+            $table->foreignId('user_id')
+                  ->constrained('users')
+                  ->cascadeOnDelete(); // foreignId => convert id to unsigned big integer
+
             $table->string('title')->unique();
             $table->string('slug')->unique();
             $table->text('excerpt')->comment('summary of the post');

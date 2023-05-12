@@ -21,6 +21,7 @@ class PostFactory extends Factory
         $slug = Str::slug($title,separator:'-');
 
         return [
+            'user_id' =>fake()->randomDigit(),
             'title'=>$title,
             'slug'=>$slug,
             'excerpt'=>fake()->sentence,
