@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+//    \Barryvdh\Debugbar\Facades\Debugbar::info('Hii');
     return view('welcome');
 });
 
