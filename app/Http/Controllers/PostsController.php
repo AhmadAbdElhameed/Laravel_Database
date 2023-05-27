@@ -128,12 +128,105 @@ class PostsController extends Controller
 //        }
 
 
-                $posts = DB::table('posts')
-                    ->whereBetween('min_to_read',[0,7])
-                    ->get();
-
-                 dump($posts);
+//                $posts = DB::table('posts')
+//                    ->whereBetween('min_to_read',[0,7])
+//                    ->get();
+//                 dump($posts);
 //        return view('index',compact('posts'));
+
+
+
+
+        // Part 2
+        // Database Transactions
+
+//        DB::transaction(function (){
+//            DB::table('users')
+//                ->where('id',1)
+//                ->decrement('balance',2220);
+//
+//            DB::table('users')
+//                ->where('id',2)
+//                ->increment('balance',2220);
+//        });
+
+
+//        $posts = DB::table('posts')
+//            ->orderBy('id')
+//            ->chunk(200,function($posts){
+//                foreach ($posts as $post){
+//                    $post->title;
+//                }
+//            });
+//
+//        dd($posts);
+
+//        $posts = DB::table('posts')
+//            ->orderBy('id')
+//            ->lazy()
+//        ->each(function($post){
+//            $post->title;
+//        });
+
+
+//        $posts = DB::table('posts')
+//            ->where('id',1020)
+//            ->lazyById();
+
+//        $posts = DB::table('posts')
+//            ->select('user_id',DB::raw("SUM(min_to_read) as total_time"))
+//            ->groupBy('user_id')
+//            ->havingRaw('SUM(total_time) > 10')
+//            ->get();
+
+
+        // latest VS oldest
+//        $posts = DB::table('posts')
+//            ->latest('created_at')
+//            ->get();
+
+//        $posts = DB::table('posts')
+//            ->whereFullText('description','aliquid')
+//            ->orWhereFullText('description','sapiente')
+//            ->get();
+
+//        $posts = DB::table('posts')
+//            ->offset(10)
+//            ->limit(10)
+//            ->get();
+
+
+//        $posts = DB::table('posts')
+//            ->when(function($query){
+//                return $query->where('is_published' , true);
+//            })->get();
+
+
+//        $posts = DB::table('posts')
+//            ->orderBy('is_published');
+//        $unorder = $posts->reorder('title','asc')->get();
+//        dd($unorder);
+
+//        $posts = DB::table('posts')
+//            ->orderBy('is_published');
+//        dd($posts);
+
+//        $posts = DB::table('posts')->paginate(5);
+//        $posts = DB::table('posts')->simplePaginate(5);
+        $posts = DB::table('posts')
+            ->orderBy('id')
+            ->cursorPaginate(5);
+
+
+//        dd($posts);
+
+
+
+        return view('posts.index',compact('posts'));
+
+
+
+
     }
 
     /**
