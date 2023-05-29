@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
 //        Post::factory(5)->create();
 
         //second method
+        $this->call(UserSeeder::class);
         $this->call(PostSeeder::class);
     }
 }

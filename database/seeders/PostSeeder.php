@@ -14,7 +14,7 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
-        Post::factory(5)->create();
+        Post::factory(500)->create();
 //        Post::create([
 //            'title'=>"second post",
 //            'slug'=>"second slug",
@@ -59,8 +59,8 @@ class PostSeeder extends Seeder
 //
 //            });
 
-            $json = File::get('database/json/posts.json');
-            $posts = collect(json_decode($json));
+            //$json = File::get('database/json/posts.json');
+            //$posts = collect(json_decode($json));
 
         // to create posts using json file
 //            $posts->each(function ($post){
