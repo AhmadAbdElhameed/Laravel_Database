@@ -74,4 +74,14 @@ class User extends Authenticatable
         );
     }
 
+        public function latestJob(): \Illuminate\Database\Eloquent\Relations\HasOne
+        {
+            return $this->hasOne(Job::class)->latestOfMany();
+        }
+
+    public function oldestJob(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Job::class)->oldestOfMany();
+    }
+
 }
