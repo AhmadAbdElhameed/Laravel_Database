@@ -84,4 +84,19 @@ class User extends Authenticatable
         return $this->hasOne(Job::class)->oldestOfMany();
     }
 
+    public function image(): \Illuminate\Database\Eloquent\Relations\MorphOne
+    {
+        return $this->morphOne(Image::class,'imageable');
+    }
+
+    public function latestImage(): \Illuminate\Database\Eloquent\Relations\MorphOne
+    {
+        return $this->morphOne(Image::class,'imageable')->latestOfMany();
+    }
+
+    public function oldestImage(): \Illuminate\Database\Eloquent\Relations\MorphOne
+    {
+        return $this->morphOne(Image::class,'imageable')->oldestOfMany();
+    }
+
 }

@@ -28,8 +28,25 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function tags(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+//    public function tags(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+//    {
+//        return $this->belongsToMany(Tag::class);
+//    }
+
+    public function image(): \Illuminate\Database\Eloquent\Relations\MorphOne
     {
-        return $this->belongsToMany(Tag::class);
+        return $this->morphOne(Image::class,'imageable');
     }
+
+    public function comments(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    {
+        return $this->morphMany(Comment::class,'commentable');
+    }
+
+    public function tags(): \Illuminate\Database\Eloquent\Relations\MorphToMany
+    {
+        return $this->morphToMany(Tag::class,'taggable');
+    }
+
+
 }

@@ -11,8 +11,13 @@ class Tag extends Model
 
     protected $fillable = ['name','slug'];
 
-    public function posts(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+//    public function posts(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+//    {
+//        return $this->belongsToMany(Post::class);
+//    }
+
+    public function taggables(): \Illuminate\Database\Eloquent\Relations\MorphToMany
     {
-        return $this->belongsToMany(Post::class);
+        return $this->morphToMany(Taggable::class,'taggable');
     }
 }
